@@ -271,72 +271,72 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Init_ADC ]
 [f ]
-"12
-[; ;adc.c: 12:     ADCON0bits.ADCS0 = 0;
-[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "13
-[; ;adc.c: 13:     ADCON0bits.ADCS1 = 1;
-[e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
+[; ;adc.c: 13:     ADCON0bits.ADCS0 = 0;
+[e = . . _ADCON0bits 1 5 -> -> 0 `i `uc ]
 "14
-[; ;adc.c: 14:     ADCON1bits.ADCS2 = 1;
+[; ;adc.c: 14:     ADCON0bits.ADCS1 = 1;
+[e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
+"15
+[; ;adc.c: 15:     ADCON1bits.ADCS2 = 1;
 [e = . . _ADCON1bits 0 2 -> -> 1 `i `uc ]
-"16
-[; ;adc.c: 16:     ADCON0bits.CHS0=0;
-[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
-"17
-[; ;adc.c: 17:     ADCON0bits.CHS1=0;
-[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "18
-[; ;adc.c: 18:     ADCON0bits.CHS2=0;
-[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
+[; ;adc.c: 18:     ADCON0bits.CHS0=0;
+[e = . . _ADCON0bits 1 2 -> -> 0 `i `uc ]
+"19
+[; ;adc.c: 19:     ADCON0bits.CHS1=0;
+[e = . . _ADCON0bits 1 3 -> -> 0 `i `uc ]
 "20
-[; ;adc.c: 20:     ADCON1bits.ADFM = 1;
-[e = . . _ADCON1bits 0 3 -> -> 1 `i `uc ]
-"21
-[; ;adc.c: 21:     ADCON1bits.PCFG0 = 0;
-[e = . . _ADCON1bits 1 0 -> -> 0 `i `uc ]
-"22
-[; ;adc.c: 22:     ADCON1bits.PCFG1 = 0;
-[e = . . _ADCON1bits 1 1 -> -> 0 `i `uc ]
+[; ;adc.c: 20:     ADCON0bits.CHS2=0;
+[e = . . _ADCON0bits 1 4 -> -> 0 `i `uc ]
 "23
-[; ;adc.c: 23:     ADCON1bits.PCFG2 = 0;
-[e = . . _ADCON1bits 1 2 -> -> 0 `i `uc ]
-"24
-[; ;adc.c: 24:     ADCON1bits.PCFG3 = 0;
-[e = . . _ADCON1bits 1 3 -> -> 0 `i `uc ]
+[; ;adc.c: 23:     ADCON1bits.ADFM = 1;
+[e = . . _ADCON1bits 0 3 -> -> 1 `i `uc ]
 "26
-[; ;adc.c: 26:     ADCON0bits.GO_DONE = 1;
-[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+[; ;adc.c: 26:     ADCON1bits.PCFG0 = 0;
+[e = . . _ADCON1bits 1 0 -> -> 0 `i `uc ]
 "27
-[; ;adc.c: 27:     ADCON0bits.ADON = 1;
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+[; ;adc.c: 27:     ADCON1bits.PCFG1 = 0;
+[e = . . _ADCON1bits 1 1 -> -> 0 `i `uc ]
 "28
-[; ;adc.c: 28: }
+[; ;adc.c: 28:     ADCON1bits.PCFG2 = 0;
+[e = . . _ADCON1bits 1 2 -> -> 0 `i `uc ]
+"29
+[; ;adc.c: 29:     ADCON1bits.PCFG3 = 0;
+[e = . . _ADCON1bits 1 3 -> -> 0 `i `uc ]
+"31
+[; ;adc.c: 31:     ADCON0bits.GO_DONE = 1;
+[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+"32
+[; ;adc.c: 32:     ADCON0bits.ADON = 1;
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+"33
+[; ;adc.c: 33: }
 [e :UE 100 ]
 }
-"29
-[; ;adc.c: 29: float read_ADC()
+"35
+[; ;adc.c: 35: float read_ADC()
 [v _read_ADC `(f ~T0 @X0 1 ef ]
-"30
-[; ;adc.c: 30: {
+"36
+[; ;adc.c: 36: {
 {
 [e :U _read_ADC ]
 [f ]
-"31
-[; ;adc.c: 31:     float data = 0;
+"37
+[; ;adc.c: 37:     float data = 0;
 [v _data `f ~T0 @X0 1 a ]
 [e = _data -> -> 0 `i `f ]
-"32
-[; ;adc.c: 32:     data = ((ADRESH << 8) + ADRESL);
+"38
+[; ;adc.c: 38:     data = ((ADRESH << 8) + ADRESL);
 [e = _data -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `f ]
-"33
-[; ;adc.c: 33:     data = (data/1023.0 * 100);
+"39
+[; ;adc.c: 39:     data = (data/1023.0 * 100);
 [e = _data -> * / -> _data `d .1023.0 -> -> 100 `i `d `f ]
-"34
-[; ;adc.c: 34:     return data;
+"40
+[; ;adc.c: 40:     return data;
 [e ) _data ]
 [e $UE 101  ]
-"35
-[; ;adc.c: 35: }
+"41
+[; ;adc.c: 41: }
 [e :UE 101 ]
 }

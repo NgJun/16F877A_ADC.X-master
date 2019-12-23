@@ -1990,31 +1990,27 @@ char* BT_get_string(void);
 void Initialize_Bluetooth()
 {
 
+
+
+
+
+
+
     TRISC6=1;
     TRISC7=1;
 
 
 
+
     BRGH=1;
     SPBRG =129;
-
-
-
-
-
-
-
+# 29 "bluetooth.c"
     SYNC=0;
     SPEN=1;
-
-
-
-
-
-
-
+# 39 "bluetooth.c"
     RX9=0;
     TX9=0;
+
 
     TXEN=1;
     CREN=1;
@@ -2047,15 +2043,16 @@ void broadcast_BT()
 }
 char BT_get_char(void)
 {
-    if(OERR)
+    if(OERR == 1 )
     {
         CREN = 0;
         CREN = 1;
     }
 
+
     if(RCIF==1)
     {
-    while(!RCIF);
+    while( RCIF == 0);
     return RCREG;
     }
     else

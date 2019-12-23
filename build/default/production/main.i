@@ -7,14 +7,7 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-
-
-
-
-
-
-
-
+# 10 "main.c"
 # 1 "./config.h" 1
 
 
@@ -1983,7 +1976,7 @@ typedef uint16_t uintptr_t;
 # 22 "./config.h" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c90\\stdbool.h" 1 3
 # 23 "./config.h" 2
-# 10 "main.c" 2
+# 11 "main.c" 2
 
 # 1 "./adc.h" 1
 # 1 "./config.h" 1
@@ -2017,7 +2010,7 @@ typedef uint16_t uintptr_t;
 
 void Init_ADC();
 float read_ADC();
-# 12 "main.c" 2
+# 13 "main.c" 2
 # 1 "./bluetooth.h" 1
 # 1 "./config.h" 1
 
@@ -2054,16 +2047,24 @@ void BT_load_string(char* string);
 void broadcast_BT();
 char BT_get_char(void);
 char* BT_get_string(void);
-# 13 "main.c" 2
+# 14 "main.c" 2
 
 
 void Pin_Init()
 {
     TRISA = 0xFF;
-    TRISB = 0;
+
+    TRISB = 0x00;
+
     PORTB = 0xFF;
+
+
+
+
+
     _delay((unsigned long)((200)*(20000000/4000.0)));
     PORTB = 0;
+
     TRISD = 0;
 }
 
@@ -2072,30 +2073,39 @@ void main(void) {
     Init_ADC();
     Initialize_Bluetooth();
 
-    int blt_mess;
+    int blt_mess=0;
     BT_load_string("Bluetooth Initialized and Ready");
     broadcast_BT();
 
     char mess[20];
     float data = 0;
-    unsigned int LED_mode = 0;
+    unsigned int LED_mode = 1;
     unsigned int send_mode = 1;
     int time = 0;
     int i=0;
     while(1)
     {
         blt_mess = BT_get_char();
-        if( blt_mess == '1' ) PORTB = 0xFF;
+
+
         if( blt_mess == '0' ) PORTB = 0;
+        if( blt_mess == '1' ) PORTB = 0xFF;
+
         if( blt_mess == '2' ) LED_mode= 0;
         if( blt_mess == '3' ) LED_mode = 1;
+
+ if( blt_mess == '4' ) send_mode= 0;
+        if( blt_mess == '5' ) send_mode = 1;
+
        if(ADCON0bits.GO_DONE == 0 )
         {
-           time++;
+           if(time > 25 )
+               time = 0;
+           else time++;
             ADCON0bits.GO_DONE = 1;
             data = read_ADC();
-
-                if(data>62 && time > 8)
+            if(LED_mode == 1)
+                if(data>62 && time > 8 )
             {
                 time = 0;
                 PORTB = 0xFF;
@@ -2105,11 +2115,18 @@ void main(void) {
 
             if(send_mode == 1)
             {
+
+
             sprintf(mess, "%.2f",data);
+
+
+
+
             BT_load_string(mess);
             broadcast_BT();
-
             _delay((unsigned long)((50)*(20000000/4000.0)));
+
+
             }
 
         }

@@ -263,180 +263,180 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Initialize_Bluetooth ]
 [f ]
-"6
-[; ;bluetooth.c: 6:     TRISC6=1;
-[e = _TRISC6 -> -> 1 `i `b ]
-"7
-[; ;bluetooth.c: 7:     TRISC7=1;
-[e = _TRISC7 -> -> 1 `i `b ]
-"11
-[; ;bluetooth.c: 11:     BRGH=1;
-[e = _BRGH -> -> 1 `i `b ]
 "12
-[; ;bluetooth.c: 12:     SPBRG =129;
+[; ;bluetooth.c: 12:     TRISC6=1;
+[e = _TRISC6 -> -> 1 `i `b ]
+"13
+[; ;bluetooth.c: 13:     TRISC7=1;
+[e = _TRISC7 -> -> 1 `i `b ]
+"18
+[; ;bluetooth.c: 18:     BRGH=1;
+[e = _BRGH -> -> 1 `i `b ]
+"19
+[; ;bluetooth.c: 19:     SPBRG =129;
 [e = _SPBRG -> -> 129 `i `uc ]
-"20
-[; ;bluetooth.c: 20:     SYNC=0;
-[e = _SYNC -> -> 0 `i `b ]
-"21
-[; ;bluetooth.c: 21:     SPEN=1;
-[e = _SPEN -> -> 1 `i `b ]
 "29
-[; ;bluetooth.c: 29:     RX9=0;
-[e = _RX9 -> -> 0 `i `b ]
+[; ;bluetooth.c: 29:     SYNC=0;
+[e = _SYNC -> -> 0 `i `b ]
 "30
-[; ;bluetooth.c: 30:     TX9=0;
-[e = _TX9 -> -> 0 `i `b ]
-"32
-[; ;bluetooth.c: 32:     TXEN=1;
-[e = _TXEN -> -> 1 `i `b ]
-"33
-[; ;bluetooth.c: 33:     CREN=1;
-[e = _CREN -> -> 1 `i `b ]
-"36
-[; ;bluetooth.c: 36:     GIE = 1;
-[e = _GIE -> -> 1 `i `b ]
-"37
-[; ;bluetooth.c: 37:     PEIE= 1;
-[e = _PEIE -> -> 1 `i `b ]
+[; ;bluetooth.c: 30:     SPEN=1;
+[e = _SPEN -> -> 1 `i `b ]
+"39
+[; ;bluetooth.c: 39:     RX9=0;
+[e = _RX9 -> -> 0 `i `b ]
 "40
-[; ;bluetooth.c: 40:     RCIE=1;
+[; ;bluetooth.c: 40:     TX9=0;
+[e = _TX9 -> -> 0 `i `b ]
+"43
+[; ;bluetooth.c: 43:     TXEN=1;
+[e = _TXEN -> -> 1 `i `b ]
+"44
+[; ;bluetooth.c: 44:     CREN=1;
+[e = _CREN -> -> 1 `i `b ]
+"47
+[; ;bluetooth.c: 47:     GIE = 1;
+[e = _GIE -> -> 1 `i `b ]
+"48
+[; ;bluetooth.c: 48:     PEIE= 1;
+[e = _PEIE -> -> 1 `i `b ]
+"51
+[; ;bluetooth.c: 51:     RCIE=1;
 [e = _RCIE -> -> 1 `i `b ]
-"41
-[; ;bluetooth.c: 41:     TXIE=1;
+"52
+[; ;bluetooth.c: 52:     TXIE=1;
 [e = _TXIE -> -> 1 `i `b ]
-"42
-[; ;bluetooth.c: 42: }
+"53
+[; ;bluetooth.c: 53: }
 [e :UE 96 ]
 }
-"44
-[; ;bluetooth.c: 44: void BT_load_char(char byte)
+"55
+[; ;bluetooth.c: 55: void BT_load_char(char byte)
 [v _BT_load_char `(v ~T0 @X0 1 ef1`uc ]
-"45
-[; ;bluetooth.c: 45: {
+"56
+[; ;bluetooth.c: 56: {
 {
 [e :U _BT_load_char ]
-"44
-[; ;bluetooth.c: 44: void BT_load_char(char byte)
+"55
+[; ;bluetooth.c: 55: void BT_load_char(char byte)
 [v _byte `uc ~T0 @X0 1 r1 ]
-"45
-[; ;bluetooth.c: 45: {
+"56
+[; ;bluetooth.c: 56: {
 [f ]
-"46
-[; ;bluetooth.c: 46:     while(TXIF==0);
+"57
+[; ;bluetooth.c: 57:     while(TXIF==0);
 [e $U 98  ]
 [e :U 99 ]
 [e :U 98 ]
 [e $ == -> _TXIF `i -> 0 `i 99  ]
 [e :U 100 ]
-"47
-[; ;bluetooth.c: 47:     while(TRMT==0);
+"58
+[; ;bluetooth.c: 58:     while(TRMT==0);
 [e $U 101  ]
 [e :U 102 ]
 [e :U 101 ]
 [e $ == -> _TRMT `i -> 0 `i 102  ]
 [e :U 103 ]
-"48
-[; ;bluetooth.c: 48:     TXREG = byte;
+"59
+[; ;bluetooth.c: 59:     TXREG = byte;
 [e = _TXREG -> _byte `uc ]
-"49
-[; ;bluetooth.c: 49: }
+"60
+[; ;bluetooth.c: 60: }
 [e :UE 97 ]
 }
-"51
-[; ;bluetooth.c: 51: void BT_load_string(char* string)
+"62
+[; ;bluetooth.c: 62: void BT_load_string(char* string)
 [v _BT_load_string `(v ~T0 @X0 1 ef1`*uc ]
-"52
-[; ;bluetooth.c: 52: {
+"63
+[; ;bluetooth.c: 63: {
 {
 [e :U _BT_load_string ]
-"51
-[; ;bluetooth.c: 51: void BT_load_string(char* string)
+"62
+[; ;bluetooth.c: 62: void BT_load_string(char* string)
 [v _string `*uc ~T0 @X0 1 r1 ]
-"52
-[; ;bluetooth.c: 52: {
+"63
+[; ;bluetooth.c: 63: {
 [f ]
-"53
-[; ;bluetooth.c: 53:     while(*string) BT_load_char(*string++);
+"64
+[; ;bluetooth.c: 64:     while(*string) BT_load_char(*string++);
 [e $U 105  ]
 [e :U 106 ]
 [e ( _BT_load_char (1 *U ++ _string * -> -> 1 `i `x -> -> # *U _string `i `x ]
 [e :U 105 ]
 [e $ != -> *U _string `i -> 0 `i 106  ]
 [e :U 107 ]
-"55
-[; ;bluetooth.c: 55: }
+"66
+[; ;bluetooth.c: 66: }
 [e :UE 104 ]
 }
-"56
-[; ;bluetooth.c: 56: void broadcast_BT()
+"67
+[; ;bluetooth.c: 67: void broadcast_BT()
 [v _broadcast_BT `(v ~T0 @X0 1 ef ]
-"57
-[; ;bluetooth.c: 57: {
+"68
+[; ;bluetooth.c: 68: {
 {
 [e :U _broadcast_BT ]
 [f ]
-"58
-[; ;bluetooth.c: 58:   TXREG = 13;
+"69
+[; ;bluetooth.c: 69:   TXREG = 13;
 [e = _TXREG -> -> 13 `i `uc ]
-"60
-[; ;bluetooth.c: 60: }
+"71
+[; ;bluetooth.c: 71: }
 [e :UE 108 ]
 }
-"61
-[; ;bluetooth.c: 61: char BT_get_char(void)
+"72
+[; ;bluetooth.c: 72: char BT_get_char(void)
 [v _BT_get_char `(uc ~T0 @X0 1 ef ]
-"62
-[; ;bluetooth.c: 62: {
+"73
+[; ;bluetooth.c: 73: {
 {
 [e :U _BT_get_char ]
 [f ]
-"63
-[; ;bluetooth.c: 63:     if(OERR)
-[e $ ! _OERR 110  ]
-"64
-[; ;bluetooth.c: 64:     {
+"74
+[; ;bluetooth.c: 74:     if(OERR == 1 )
+[e $ ! == -> _OERR `i -> 1 `i 110  ]
+"75
+[; ;bluetooth.c: 75:     {
 {
-"65
-[; ;bluetooth.c: 65:         CREN = 0;
+"76
+[; ;bluetooth.c: 76:         CREN = 0;
 [e = _CREN -> -> 0 `i `b ]
-"66
-[; ;bluetooth.c: 66:         CREN = 1;
+"77
+[; ;bluetooth.c: 77:         CREN = 1;
 [e = _CREN -> -> 1 `i `b ]
-"67
-[; ;bluetooth.c: 67:     }
+"78
+[; ;bluetooth.c: 78:     }
 }
 [e :U 110 ]
-"69
-[; ;bluetooth.c: 69:     if(RCIF==1)
+"81
+[; ;bluetooth.c: 81:     if(RCIF==1)
 [e $ ! == -> _RCIF `i -> 1 `i 111  ]
-"70
-[; ;bluetooth.c: 70:     {
+"82
+[; ;bluetooth.c: 82:     {
 {
-"71
-[; ;bluetooth.c: 71:     while(!RCIF);
+"83
+[; ;bluetooth.c: 83:     while( RCIF == 0);
 [e $U 112  ]
 [e :U 113 ]
 [e :U 112 ]
-[e $ ! _RCIF 113  ]
+[e $ == -> _RCIF `i -> 0 `i 113  ]
 [e :U 114 ]
-"72
-[; ;bluetooth.c: 72:     return RCREG;
+"84
+[; ;bluetooth.c: 84:     return RCREG;
 [e ) -> _RCREG `uc ]
 [e $UE 109  ]
-"73
-[; ;bluetooth.c: 73:     }
+"85
+[; ;bluetooth.c: 85:     }
 }
 [e $U 115  ]
-"74
-[; ;bluetooth.c: 74:     else
+"86
+[; ;bluetooth.c: 86:     else
 [e :U 111 ]
-"75
-[; ;bluetooth.c: 75:         return 0;
+"87
+[; ;bluetooth.c: 87:         return 0;
 [e ) -> -> 0 `i `uc ]
 [e $UE 109  ]
 [e :U 115 ]
-"76
-[; ;bluetooth.c: 76: }
+"88
+[; ;bluetooth.c: 88: }
 [e :UE 109 ]
 }

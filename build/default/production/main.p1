@@ -287,187 +287,211 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p x WRT = OFF ]
 "14
 [p x CP = OFF ]
-"15 main.c
-[; ;main.c: 15: void Pin_Init()
+"16 main.c
+[; ;main.c: 16: void Pin_Init()
 [v _Pin_Init `(v ~T0 @X0 1 ef ]
-"16
-[; ;main.c: 16: {
+"17
+[; ;main.c: 17: {
 {
 [e :U _Pin_Init ]
 [f ]
-"17
-[; ;main.c: 17:     TRISA = 0xFF;
-[e = _TRISA -> -> 255 `i `uc ]
 "18
-[; ;main.c: 18:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
-"19
-[; ;main.c: 19:     PORTB = 0xFF;
-[e = _PORTB -> -> 255 `i `uc ]
+[; ;main.c: 18:     TRISA = 0xFF;
+[e = _TRISA -> -> 255 `i `uc ]
 "20
-[; ;main.c: 20:     _delay((unsigned long)((200)*(20000000/4000.0)));
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"21
-[; ;main.c: 21:     PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
+[; ;main.c: 20:     TRISB = 0x00;
+[e = _TRISB -> -> 0 `i `uc ]
 "22
-[; ;main.c: 22:     TRISD = 0;
+[; ;main.c: 22:     PORTB = 0xFF;
+[e = _PORTB -> -> 255 `i `uc ]
+"28
+[; ;main.c: 28:     _delay((unsigned long)((200)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"29
+[; ;main.c: 29:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
+"31
+[; ;main.c: 31:     TRISD = 0;
 [e = _TRISD -> -> 0 `i `uc ]
-"23
-[; ;main.c: 23: }
+"32
+[; ;main.c: 32: }
 [e :UE 96 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"25
-[; ;main.c: 25: void main(void) {
+"34
+[; ;main.c: 34: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"26
-[; ;main.c: 26:     Pin_Init();
-[e ( _Pin_Init ..  ]
-"27
-[; ;main.c: 27:     Init_ADC();
-[e ( _Init_ADC ..  ]
-"28
-[; ;main.c: 28:     Initialize_Bluetooth();
-[e ( _Initialize_Bluetooth ..  ]
-"30
-[; ;main.c: 30:     int blt_mess;
-[v _blt_mess `i ~T0 @X0 1 a ]
-"31
-[; ;main.c: 31:     BT_load_string("Bluetooth Initialized and Ready");
-[e ( _BT_load_string (1 :s 1C ]
-"32
-[; ;main.c: 32:     broadcast_BT();
-[e ( _broadcast_BT ..  ]
-"34
-[; ;main.c: 34:     char mess[20];
-[v _mess `uc ~T0 @X0 -> 20 `i a ]
 "35
-[; ;main.c: 35:     float data = 0;
+[; ;main.c: 35:     Pin_Init();
+[e ( _Pin_Init ..  ]
+"36
+[; ;main.c: 36:     Init_ADC();
+[e ( _Init_ADC ..  ]
+"37
+[; ;main.c: 37:     Initialize_Bluetooth();
+[e ( _Initialize_Bluetooth ..  ]
+"39
+[; ;main.c: 39:     int blt_mess=0;
+[v _blt_mess `i ~T0 @X0 1 a ]
+[e = _blt_mess -> 0 `i ]
+"40
+[; ;main.c: 40:     BT_load_string("Bluetooth Initialized and Ready");
+[e ( _BT_load_string (1 :s 1C ]
+"41
+[; ;main.c: 41:     broadcast_BT();
+[e ( _broadcast_BT ..  ]
+"43
+[; ;main.c: 43:     char mess[20];
+[v _mess `uc ~T0 @X0 -> 20 `i a ]
+"44
+[; ;main.c: 44:     float data = 0;
 [v _data `f ~T0 @X0 1 a ]
 [e = _data -> -> 0 `i `f ]
-"36
-[; ;main.c: 36:     unsigned int LED_mode = 0;
+"45
+[; ;main.c: 45:     unsigned int LED_mode = 1;
 [v _LED_mode `ui ~T0 @X0 1 a ]
-[e = _LED_mode -> -> 0 `i `ui ]
-"37
-[; ;main.c: 37:     unsigned int send_mode = 1;
+[e = _LED_mode -> -> 1 `i `ui ]
+"46
+[; ;main.c: 46:     unsigned int send_mode = 1;
 [v _send_mode `ui ~T0 @X0 1 a ]
 [e = _send_mode -> -> 1 `i `ui ]
-"38
-[; ;main.c: 38:     int time = 0;
+"47
+[; ;main.c: 47:     int time = 0;
 [v _time `i ~T0 @X0 1 a ]
 [e = _time -> 0 `i ]
-"39
-[; ;main.c: 39:     int i=0;
+"48
+[; ;main.c: 48:     int i=0;
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-"40
-[; ;main.c: 40:     while(1)
+"49
+[; ;main.c: 49:     while(1)
 [e :U 99 ]
-"41
-[; ;main.c: 41:     {
+"50
+[; ;main.c: 50:     {
 {
-"42
-[; ;main.c: 42:         blt_mess = BT_get_char();
+"51
+[; ;main.c: 51:         blt_mess = BT_get_char();
 [e = _blt_mess -> ( _BT_get_char ..  `i ]
-"43
-[; ;main.c: 43:         if( blt_mess == '1' ) PORTB = 0xFF;
-[e $ ! == -> _blt_mess `ui -> 49 `ui 101  ]
-[e = _PORTB -> -> 255 `i `uc ]
-[e :U 101 ]
-"44
-[; ;main.c: 44:         if( blt_mess == '0' ) PORTB = 0;
-[e $ ! == -> _blt_mess `ui -> 48 `ui 102  ]
+"54
+[; ;main.c: 54:         if( blt_mess == '0' ) PORTB = 0;
+[e $ ! == -> _blt_mess `ui -> 48 `ui 101  ]
 [e = _PORTB -> -> 0 `i `uc ]
+[e :U 101 ]
+"55
+[; ;main.c: 55:         if( blt_mess == '1' ) PORTB = 0xFF;
+[e $ ! == -> _blt_mess `ui -> 49 `ui 102  ]
+[e = _PORTB -> -> 255 `i `uc ]
 [e :U 102 ]
-"45
-[; ;main.c: 45:         if( blt_mess == '2' ) LED_mode= 0;
+"57
+[; ;main.c: 57:         if( blt_mess == '2' ) LED_mode= 0;
 [e $ ! == -> _blt_mess `ui -> 50 `ui 103  ]
 [e = _LED_mode -> -> 0 `i `ui ]
 [e :U 103 ]
-"46
-[; ;main.c: 46:         if( blt_mess == '3' ) LED_mode = 1;
+"58
+[; ;main.c: 58:         if( blt_mess == '3' ) LED_mode = 1;
 [e $ ! == -> _blt_mess `ui -> 51 `ui 104  ]
 [e = _LED_mode -> -> 1 `i `ui ]
 [e :U 104 ]
-"47
-[; ;main.c: 47:        if(ADCON0bits.GO_DONE == 0 )
-[e $ ! == -> . . _ADCON0bits 3 1 `i -> 0 `i 105  ]
-"48
-[; ;main.c: 48:         {
-{
-"49
-[; ;main.c: 49:            time++;
-[e ++ _time -> 1 `i ]
-"50
-[; ;main.c: 50:             ADCON0bits.GO_DONE = 1;
-[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
-"51
-[; ;main.c: 51:             data = read_ADC();
-[e = _data ( _read_ADC ..  ]
-"53
-[; ;main.c: 53:                 if(data>62 && time > 8)
-[e $ ! && > _data -> -> 62 `i `f > _time -> 8 `i 106  ]
-"54
-[; ;main.c: 54:             {
-{
-"55
-[; ;main.c: 55:                 time = 0;
-[e = _time -> 0 `i ]
-"56
-[; ;main.c: 56:                 PORTB = 0xFF;
-[e = _PORTB -> -> 255 `i `uc ]
-"57
-[; ;main.c: 57:                 _delay((unsigned long)((5)*(20000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"58
-[; ;main.c: 58:                 PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
-"59
-[; ;main.c: 59:             }
-}
-[e :U 106 ]
+"60
+[; ;main.c: 60:  if( blt_mess == '4' ) send_mode= 0;
+[e $ ! == -> _blt_mess `ui -> 52 `ui 105  ]
+[e = _send_mode -> -> 0 `i `ui ]
+[e :U 105 ]
 "61
-[; ;main.c: 61:             if(send_mode == 1)
-[e $ ! == _send_mode -> -> 1 `i `ui 107  ]
-"62
-[; ;main.c: 62:             {
-{
+[; ;main.c: 61:         if( blt_mess == '5' ) send_mode = 1;
+[e $ ! == -> _blt_mess `ui -> 53 `ui 106  ]
+[e = _send_mode -> -> 1 `i `ui ]
+[e :U 106 ]
 "63
-[; ;main.c: 63:             sprintf(mess, "%.2f",data);
-[e ( _sprintf (1 , (. , &U _mess :s 2C -> _data `d ]
+[; ;main.c: 63:        if(ADCON0bits.GO_DONE == 0 )
+[e $ ! == -> . . _ADCON0bits 3 1 `i -> 0 `i 107  ]
 "64
-[; ;main.c: 64:             BT_load_string(mess);
-[e ( _BT_load_string (1 &U _mess ]
+[; ;main.c: 64:         {
+{
 "65
-[; ;main.c: 65:             broadcast_BT();
-[e ( _broadcast_BT ..  ]
+[; ;main.c: 65:            if(time > 25 )
+[e $ ! > _time -> 25 `i 108  ]
+"66
+[; ;main.c: 66:                time = 0;
+[e = _time -> 0 `i ]
+[e $U 109  ]
 "67
-[; ;main.c: 67:             _delay((unsigned long)((50)*(20000000/4000.0)));
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+[; ;main.c: 67:            else time++;
+[e :U 108 ]
+[e ++ _time -> 1 `i ]
+[e :U 109 ]
 "68
-[; ;main.c: 68:             }
+[; ;main.c: 68:             ADCON0bits.GO_DONE = 1;
+[e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+"69
+[; ;main.c: 69:             data = read_ADC();
+[e = _data ( _read_ADC ..  ]
+"70
+[; ;main.c: 70:             if(LED_mode == 1)
+[e $ ! == _LED_mode -> -> 1 `i `ui 110  ]
+"71
+[; ;main.c: 71:                 if(data>62 && time > 8 )
+[e $ ! && > _data -> -> 62 `i `f > _time -> 8 `i 111  ]
+"72
+[; ;main.c: 72:             {
+{
+"73
+[; ;main.c: 73:                 time = 0;
+[e = _time -> 0 `i ]
+"74
+[; ;main.c: 74:                 PORTB = 0xFF;
+[e = _PORTB -> -> 255 `i `uc ]
+"75
+[; ;main.c: 75:                 _delay((unsigned long)((5)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"76
+[; ;main.c: 76:                 PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
+"77
+[; ;main.c: 77:             }
+}
+[e :U 111 ]
+[e :U 110 ]
+"79
+[; ;main.c: 79:             if(send_mode == 1)
+[e $ ! == _send_mode -> -> 1 `i `ui 112  ]
+"80
+[; ;main.c: 80:             {
+{
+"83
+[; ;main.c: 83:             sprintf(mess, "%.2f",data);
+[e ( _sprintf (1 , (. , &U _mess :s 2C -> _data `d ]
+"88
+[; ;main.c: 88:             BT_load_string(mess);
+[e ( _BT_load_string (1 &U _mess ]
+"89
+[; ;main.c: 89:             broadcast_BT();
+[e ( _broadcast_BT ..  ]
+"90
+[; ;main.c: 90:             _delay((unsigned long)((50)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"93
+[; ;main.c: 93:             }
+}
+[e :U 112 ]
+"95
+[; ;main.c: 95:         }
 }
 [e :U 107 ]
-"70
-[; ;main.c: 70:         }
-}
-[e :U 105 ]
-"71
-[; ;main.c: 71:     };
+"96
+[; ;main.c: 96:     };
 }
 [e :U 98 ]
 [e $U 99  ]
 [e :U 100 ]
-"72
-[; ;main.c: 72:     return;
+"97
+[; ;main.c: 97:     return;
 [e $UE 97  ]
-"73
-[; ;main.c: 73: }
+"98
+[; ;main.c: 98: }
 [e :UE 97 ]
 }
 [p f _sprintf 8462336 ]

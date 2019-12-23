@@ -62,7 +62,9 @@ void main(void) {
         
        if(ADCON0bits.GO_DONE == 0 ) 
         {
-           time++;
+           if(time > 25 )
+               time = 0;
+           else  time++;
             ADCON0bits.GO_DONE = 1;
             data = read_ADC(); // 0-> 100
             if(LED_mode == 1)
