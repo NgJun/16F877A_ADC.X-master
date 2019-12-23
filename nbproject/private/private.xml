@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/My%20Documents/MPLABXProjects/16F877A_ADC/16F877A_ADC.X-master/adc.c</file>
-            <file>file:/C:/My%20Documents/MPLABXProjects/16F877A_ADC/16F877A_ADC.X-master/lcd.c</file>
-            <file>file:/C:/My%20Documents/MPLABXProjects/16F877A_ADC/16F877A_ADC.X-master/main.c</file>
-            <file>file:/C:/My%20Documents/MPLABXProjects/16F877A_ADC/16F877A_ADC.X-master/bluetooth.h</file>
-            <file>file:/C:/My%20Documents/MPLABXProjects/16F877A_ADC/16F877A_ADC.X-master/adc.h</file>
-            <file>file:/C:/My%20Documents/MPLABXProjects/16F877A_ADC/16F877A_ADC.X-master/bluetooth.c</file>
+            <file>file:/D:/hearbeat/16F877A_ADC.X-master/main.c</file>
+            <file>file:/D:/hearbeat/16F877A_ADC.X-master/adc.c</file>
+            <file>file:/D:/hearbeat/16F877A_ADC.X-master/bluetooth.c</file>
         </group>
     </open-files>
 </project-private>
